@@ -50,7 +50,7 @@ Parallel efficiency (defined as $\text{Efficiency} = \frac{\text{Speedup}}{p}$) 
 
 # Question 2
 
-**Number of Trials:** $10^10$
+**Number of Trials:** $10^{10}$
 
 \vspace{0.3cm}
 
@@ -60,22 +60,26 @@ Parallel efficiency (defined as $\text{Efficiency} = \frac{\text{Speedup}}{p}$) 
 \vspace{0.3cm}
 
 **Q:** In this case, what value of $p$ minimizes the parallel runtime?
-**A:** 256 threads for $10^10$ trials resulted in the minimum execution time. 
+
+**A:** 256 threads for $10^{10}$ trials resulted in the minimum execution time. 
 
 ## Question 2.2:
 
 **Q**: Do you expect the runtime to increase as p is increased beyond a certain value? If so, why? And is this observed in your experiments.
+
 **A**: Yes, although we increased the problem size, eventually, the thread overhead will outgrow the benefit gained from parallelization.  
 
 # Question 3 
 **Q**: Do you expect that there would be a difference in the number of threads needed to obtain the minimum execution time for two values of n? Is this observed in your experiments.
-**A**: Yes, I would expect the optimal number of threads to increase with the problem size, and this is confirmed by my results. For $10^8$ trials, the optimal thread count was 128, but with $10^10$ trials, it increased to 256 threads. 
+
+**A**: Yes, I would expect the optimal number of threads to increase with the problem size, and this is confirmed by my results. For $10^8$ trials, the optimal thread count was 128, but with $10^{10}$ trials, it increased to 256 threads. 
 
 
 \vspace{0.3cm}
 
 ## Question 4:  
-![Error vs Threads](./error_vs_threads_4.png){ width=70% } 
+
+![Error vs Trials](./error_vs_trials_4.png){ width=70% } 
 
 \vspace{0.3cm}
 
