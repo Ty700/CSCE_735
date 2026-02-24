@@ -1,6 +1,6 @@
 // 
 // Computes the product of two matrices: C = A * B
-// using Strassen's algorithm
+// using Strassen's algorithm, parallelized with OpenMP
 //
 #include <cstdio>
 #include <cstdlib>
@@ -38,28 +38,57 @@ class Matrix {
 	Matrix extract_submatrix(int, int, int, int); 
 	void update_submatrix(Matrix&, int, int, int, int); 
 	void initialize_matrix(double);
-//	void free_memory();
 	void print_matrix();
 
 	static void matrix_error(int); 
 
 	Matrix(int,int); 
+
+	Matrix(const Matrix& other);
+	Matrix& operator=(const Matrix& other);
+
 	~Matrix(); 
 
     private:
 	double *array;
 };
 
+// Copy constructor
+Matrix::Matrix(const Matrix& other) {
+    nrows = other.nrows;
+    ncols = other.ncols;
+    elements = new double *[nrows];
+    array = new double[nrows*ncols];
+    for (int i = 0; i < nrows; i++) elements[i] = &(array[i*ncols]);
+    for (int i = 0; i < nrows*ncols; i++) array[i] = other.array[i];
+}
+
+// Copy assignment operator
+Matrix& Matrix::operator=(const Matrix& other) {
+    if (this != &other) {
+        delete [] elements;
+        delete [] array;
+        nrows = other.nrows;
+        ncols = other.ncols;
+        elements = new double *[nrows];
+        array = new double[nrows*ncols];
+        for (int i = 0; i < nrows; i++) elements[i] = &(array[i*ncols]);
+        for (int i = 0; i < nrows*ncols; i++) array[i] = other.array[i];
+    }
+    return *this;
+}
+
 // Strassen's matrix product 
 // - return C = A * B
 // - implemented only for square matrices where nrows=ncols
+// - parallelized using OpenMP tasks for the 7 recursive multiplications
 //
 Matrix Matrix::strassens_product(Matrix& A, Matrix& B) {
 
     int n = A.nrows;
     if (A.nrows != A.ncols) Matrix::matrix_error(500); 
     if (B.nrows != B.ncols) Matrix::matrix_error(501); 
-    if (A.ncols != B.nrows) Matrix::matrix_error(502); // Matrix not square
+    if (A.ncols != B.nrows) Matrix::matrix_error(502);
 
     if (n <= leaf_matrix_size) {
 
@@ -80,30 +109,49 @@ Matrix Matrix::strassens_product(Matrix& A, Matrix& B) {
         Matrix B21 = B.extract_submatrix(n/2, n-1, 0, n/2-1);
         Matrix B22 = B.extract_submatrix(n/2, n-1, n/2, n-1);
 
-	// Compute products M1, M2, ..., M7
-		Matrix M1a = Matrix::addition(A11,A22); 
-		Matrix M1b = Matrix::addition(B11,B22);
-        Matrix M1 = Matrix::strassens_product(M1a, M1b); 
+	// Compute intermediate sums/differences needed for M1..M7
+	Matrix M1a = Matrix::addition(A11,A22); 
+	Matrix M1b = Matrix::addition(B11,B22);
+	Matrix M2a = Matrix::addition(A21,A22);
+	Matrix M3b = Matrix::subtraction(B12,B22);
+	Matrix M4b = Matrix::subtraction(B21,B11);
+	Matrix M5a = Matrix::addition(A11,A12); 
+	Matrix M6a = Matrix::subtraction(A21,A11); 
+	Matrix M6b = Matrix::addition(B11,B12);
+	Matrix M7a = Matrix::subtraction(A12,A22); 
+	Matrix M7b = Matrix::addition(B21,B22);
 
-		Matrix M2a = Matrix::addition(A21,A22);
-        Matrix M2 = Matrix::strassens_product(M2a, B11); 
+	// Compute products M1, M2, ..., M7 in parallel using OpenMP tasks
+	Matrix M1(n/2, n/2);
+	Matrix M2(n/2, n/2);
+	Matrix M3(n/2, n/2);
+	Matrix M4(n/2, n/2);
+	Matrix M5(n/2, n/2);
+	Matrix M6(n/2, n/2);
+	Matrix M7(n/2, n/2);
 
-		Matrix M3b = Matrix::subtraction(B12,B22);
-        Matrix M3 = Matrix::strassens_product(A11, M3b); 
+	#pragma omp task shared(M1) if(n > leaf_matrix_size * 2)
+	{ M1 = Matrix::strassens_product(M1a, M1b); }
 
-		Matrix M4b = Matrix::subtraction(B21,B11);
-        Matrix M4 = Matrix::strassens_product( A22, M4b); 
+	#pragma omp task shared(M2) if(n > leaf_matrix_size * 2)
+	{ M2 = Matrix::strassens_product(M2a, B11); }
 
-		Matrix M5a = Matrix::addition(A11,A12); 
-        Matrix M5 = Matrix::strassens_product(M5a, B22);
+	#pragma omp task shared(M3) if(n > leaf_matrix_size * 2)
+	{ M3 = Matrix::strassens_product(A11, M3b); }
 
-		Matrix M6a = Matrix::subtraction(A21,A11); 
-		Matrix M6b = Matrix::addition(B11,B12);
-        Matrix M6 = Matrix::strassens_product(M6a, M6b);
+	#pragma omp task shared(M4) if(n > leaf_matrix_size * 2)
+	{ M4 = Matrix::strassens_product(A22, M4b); }
 
-		Matrix M7a = Matrix::subtraction(A12,A22); 
-		Matrix M7b = Matrix::addition(B21,B22);
-        Matrix M7 = Matrix::strassens_product(M7a, M7b);
+	#pragma omp task shared(M5) if(n > leaf_matrix_size * 2)
+	{ M5 = Matrix::strassens_product(M5a, B22); }
+
+	#pragma omp task shared(M6) if(n > leaf_matrix_size * 2)
+	{ M6 = Matrix::strassens_product(M6a, M6b); }
+
+	#pragma omp task shared(M7) if(n > leaf_matrix_size * 2)
+	{ M7 = Matrix::strassens_product(M7a, M7b); }
+
+	#pragma omp taskwait
 
 	// Compute blocks of C: C11, C12, C21, C22
 	Matrix C11a = Matrix::addition(M1,M4);
@@ -131,6 +179,7 @@ Matrix Matrix::strassens_product(Matrix& A, Matrix& B) {
  
 // Standard matrix product
 // - return C = A * B
+// - parallelized with OpenMP parallel for
 Matrix Matrix::standard_product(Matrix& A, Matrix& B) {
     if (A.ncols != B.nrows) matrix_error(5); 
     Matrix C(A.nrows,B.ncols); 
@@ -254,13 +303,10 @@ Matrix::Matrix(int num_rows, int num_cols) {
 Matrix::~Matrix(){
 	delete [] elements; 
 	delete [] array; 
-//	if (elements != nullptr) { delete [] elements; elements = nullptr; }
-//	if (array != nullptr) { delete [] array; array = nullptr; }
 }
 
 // =======================================================================
 int main(int argc, char *argv[]) {
-    time_t start, end;
     double standard_time, strassens_time;
 
     // Read input, validate
@@ -282,14 +328,25 @@ int main(int argc, char *argv[]) {
         leaf_matrix_size = matrix_size;
     };  
 
+    printf("Number of threads = %d\n", omp_get_max_threads());
+
     // Initialize matrices A and B 
     Matrix A(matrix_size,matrix_size); A.initialize_matrix(1.0); 
     Matrix B(matrix_size,matrix_size); B.initialize_matrix(-1.0); 
 
     // ----------------------------------
-    // Strassen's matrix multiplication
-    start = omp_get_wtime();
-    Matrix C = Matrix::strassens_product(A,B); 
+    // Strassen's matrix multiplication (parallelized with OpenMP tasks)
+    double start = omp_get_wtime();
+    Matrix *C_ptr;
+
+    #pragma omp parallel
+    {
+        #pragma omp single
+        {
+            C_ptr = new Matrix(Matrix::strassens_product(A,B));
+        }
+    }
+
     strassens_time = omp_get_wtime() - start;
 
     printf("Matrix size = %d, Leaf matrix size = %d, Strassen's (s) = %8.4f s,",
@@ -302,12 +359,11 @@ int main(int argc, char *argv[]) {
     if (k < 11) {
     	start = omp_get_wtime();
 	    Matrix Cstd = Matrix::standard_product(A,B); 
-    	time(&end); 
     	standard_time = omp_get_wtime() - start;
 
 	    printf(" Standard = %8.4f s,", standard_time);
 
-	    int error = Matrix::compare_matrix(C,Cstd);
+	    int error = Matrix::compare_matrix(*C_ptr, Cstd);
 	    printf(" Error = %d\n", error);
 
     	if (error != 0) {
@@ -316,5 +372,6 @@ int main(int argc, char *argv[]) {
 	} else {
         printf(" Standard = not computed for large matrices \n");
 	}
-}
 
+    delete C_ptr;
+}

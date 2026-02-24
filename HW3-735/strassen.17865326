@@ -1,0 +1,209 @@
+icpx: error: no such file or directory: 'strassen_omp.cpp'
+icpx: error: no input files
+=== k=10 ===
+Threads = 1
+Number of threads = 1
+Matrix size = 1024, Leaf matrix size = 16, Strassen's (s) =   0.7168 s, Standard =   2.8147 s, Error = 0
+Number of threads = 1
+Matrix size = 1024, Leaf matrix size = 32, Strassen's (s) =   0.6589 s, Standard =   2.8198 s, Error = 0
+Number of threads = 1
+Matrix size = 1024, Leaf matrix size = 64, Strassen's (s) =   0.7090 s, Standard =   2.8235 s, Error = 0
+Threads = 2
+Number of threads = 2
+Matrix size = 1024, Leaf matrix size = 16, Strassen's (s) =   0.4533 s, Standard =   2.8401 s, Error = 0
+Number of threads = 2
+Matrix size = 1024, Leaf matrix size = 32, Strassen's (s) =   0.3916 s, Standard =   2.8671 s, Error = 0
+Number of threads = 2
+Matrix size = 1024, Leaf matrix size = 64, Strassen's (s) =   0.4258 s, Standard =   2.8693 s, Error = 0
+Threads = 4
+Number of threads = 4
+Matrix size = 1024, Leaf matrix size = 16, Strassen's (s) =   0.2736 s, Standard =   2.8738 s, Error = 0
+Number of threads = 4
+Matrix size = 1024, Leaf matrix size = 32, Strassen's (s) =   0.2368 s, Standard =   3.1132 s, Error = 0
+Number of threads = 4
+Matrix size = 1024, Leaf matrix size = 64, Strassen's (s) =   0.2527 s, Standard =   2.8662 s, Error = 0
+Threads = 8
+Number of threads = 8
+Matrix size = 1024, Leaf matrix size = 16, Strassen's (s) =   0.1812 s, Standard =   2.8755 s, Error = 0
+Number of threads = 8
+Matrix size = 1024, Leaf matrix size = 32, Strassen's (s) =   0.1478 s, Standard =   2.8274 s, Error = 0
+Number of threads = 8
+Matrix size = 1024, Leaf matrix size = 64, Strassen's (s) =   0.1631 s, Standard =   2.8736 s, Error = 0
+Threads = 16
+Number of threads = 16
+Matrix size = 1024, Leaf matrix size = 16, Strassen's (s) =   0.1362 s, Standard =   2.8294 s, Error = 0
+Number of threads = 16
+Matrix size = 1024, Leaf matrix size = 32, Strassen's (s) =   0.1293 s, Standard =   2.7841 s, Error = 0
+Number of threads = 16
+Matrix size = 1024, Leaf matrix size = 64, Strassen's (s) =   0.1240 s, Standard =   2.8601 s, Error = 0
+Threads = 24
+Number of threads = 24
+Matrix size = 1024, Leaf matrix size = 16, Strassen's (s) =   0.1338 s, Standard =   2.8368 s, Error = 0
+Number of threads = 24
+Matrix size = 1024, Leaf matrix size = 32, Strassen's (s) =   0.1154 s, Standard =   3.0725 s, Error = 0
+Number of threads = 24
+Matrix size = 1024, Leaf matrix size = 64, Strassen's (s) =   0.1104 s, Standard =   3.0922 s, Error = 0
+Threads = 48
+Number of threads = 48
+Matrix size = 1024, Leaf matrix size = 16, Strassen's (s) =   0.1418 s, Standard =   3.0601 s, Error = 0
+Number of threads = 48
+Matrix size = 1024, Leaf matrix size = 32, Strassen's (s) =   0.1686 s, Standard =   3.0582 s, Error = 0
+Number of threads = 48
+Matrix size = 1024, Leaf matrix size = 64, Strassen's (s) =   0.1609 s, Standard =   3.0260 s, Error = 0
+=== k=11 ===
+Threads = 1
+Number of threads = 1
+Matrix size = 2048, Leaf matrix size = 16, Strassen's (s) =   5.0905 s, Standard = not computed for large matrices 
+Number of threads = 1
+Matrix size = 2048, Leaf matrix size = 32, Strassen's (s) =   4.3406 s, Standard = not computed for large matrices 
+Number of threads = 1
+Matrix size = 2048, Leaf matrix size = 64, Strassen's (s) =   5.0365 s, Standard = not computed for large matrices 
+Threads = 2
+Number of threads = 2
+Matrix size = 2048, Leaf matrix size = 16, Strassen's (s) =   3.0466 s, Standard = not computed for large matrices 
+Number of threads = 2
+Matrix size = 2048, Leaf matrix size = 32, Strassen's (s) =   2.5505 s, Standard = not computed for large matrices 
+Number of threads = 2
+Matrix size = 2048, Leaf matrix size = 64, Strassen's (s) =   2.8414 s, Standard = not computed for large matrices 
+Threads = 4
+Number of threads = 4
+Matrix size = 2048, Leaf matrix size = 16, Strassen's (s) =   1.7324 s, Standard = not computed for large matrices 
+Number of threads = 4
+Matrix size = 2048, Leaf matrix size = 32, Strassen's (s) =   1.4663 s, Standard = not computed for large matrices 
+Number of threads = 4
+Matrix size = 2048, Leaf matrix size = 64, Strassen's (s) =   1.6176 s, Standard = not computed for large matrices 
+Threads = 8
+Number of threads = 8
+Matrix size = 2048, Leaf matrix size = 16, Strassen's (s) =   1.0102 s, Standard = not computed for large matrices 
+Number of threads = 8
+Matrix size = 2048, Leaf matrix size = 32, Strassen's (s) =   0.8415 s, Standard = not computed for large matrices 
+Number of threads = 8
+Matrix size = 2048, Leaf matrix size = 64, Strassen's (s) =   0.8928 s, Standard = not computed for large matrices 
+Threads = 16
+Number of threads = 16
+Matrix size = 2048, Leaf matrix size = 16, Strassen's (s) =   0.6598 s, Standard = not computed for large matrices 
+Number of threads = 16
+Matrix size = 2048, Leaf matrix size = 32, Strassen's (s) =   0.5612 s, Standard = not computed for large matrices 
+Number of threads = 16
+Matrix size = 2048, Leaf matrix size = 64, Strassen's (s) =   0.5802 s, Standard = not computed for large matrices 
+Threads = 24
+Number of threads = 24
+Matrix size = 2048, Leaf matrix size = 16, Strassen's (s) =   0.5625 s, Standard = not computed for large matrices 
+Number of threads = 24
+Matrix size = 2048, Leaf matrix size = 32, Strassen's (s) =   0.4822 s, Standard = not computed for large matrices 
+Number of threads = 24
+Matrix size = 2048, Leaf matrix size = 64, Strassen's (s) =   0.4959 s, Standard = not computed for large matrices 
+Threads = 48
+Number of threads = 48
+Matrix size = 2048, Leaf matrix size = 16, Strassen's (s) =   0.5430 s, Standard = not computed for large matrices 
+Number of threads = 48
+Matrix size = 2048, Leaf matrix size = 32, Strassen's (s) =   0.4661 s, Standard = not computed for large matrices 
+Number of threads = 48
+Matrix size = 2048, Leaf matrix size = 64, Strassen's (s) =   0.5035 s, Standard = not computed for large matrices 
+=== k=12 ===
+Threads = 1
+Number of threads = 1
+Matrix size = 4096, Leaf matrix size = 32, Strassen's (s) =  31.2423 s, Standard = not computed for large matrices 
+Number of threads = 1
+Matrix size = 4096, Leaf matrix size = 64, Strassen's (s) =  35.7430 s, Standard = not computed for large matrices 
+Number of threads = 1
+Matrix size = 4096, Leaf matrix size = 128, Strassen's (s) =  40.6425 s, Standard = not computed for large matrices 
+Threads = 2
+Number of threads = 2
+Matrix size = 4096, Leaf matrix size = 32, Strassen's (s) =  17.4575 s, Standard = not computed for large matrices 
+Number of threads = 2
+Matrix size = 4096, Leaf matrix size = 64, Strassen's (s) =  19.8868 s, Standard = not computed for large matrices 
+Number of threads = 2
+Matrix size = 4096, Leaf matrix size = 128, Strassen's (s) =  21.1823 s, Standard = not computed for large matrices 
+Threads = 4
+Number of threads = 4
+Matrix size = 4096, Leaf matrix size = 32, Strassen's (s) =   9.4676 s, Standard = not computed for large matrices 
+Number of threads = 4
+Matrix size = 4096, Leaf matrix size = 64, Strassen's (s) =  10.6021 s, Standard = not computed for large matrices 
+Number of threads = 4
+Matrix size = 4096, Leaf matrix size = 128, Strassen's (s) =  11.6393 s, Standard = not computed for large matrices 
+Threads = 8
+Number of threads = 8
+Matrix size = 4096, Leaf matrix size = 32, Strassen's (s) =   5.5481 s, Standard = not computed for large matrices 
+Number of threads = 8
+Matrix size = 4096, Leaf matrix size = 64, Strassen's (s) =   6.0634 s, Standard = not computed for large matrices 
+Number of threads = 8
+Matrix size = 4096, Leaf matrix size = 128, Strassen's (s) =   6.3852 s, Standard = not computed for large matrices 
+Threads = 16
+Number of threads = 16
+Matrix size = 4096, Leaf matrix size = 32, Strassen's (s) =   3.1809 s, Standard = not computed for large matrices 
+Number of threads = 16
+Matrix size = 4096, Leaf matrix size = 64, Strassen's (s) =   3.3603 s, Standard = not computed for large matrices 
+Number of threads = 16
+Matrix size = 4096, Leaf matrix size = 128, Strassen's (s) =   3.9598 s, Standard = not computed for large matrices 
+Threads = 24
+Number of threads = 24
+Matrix size = 4096, Leaf matrix size = 32, Strassen's (s) =   2.5964 s, Standard = not computed for large matrices 
+Number of threads = 24
+Matrix size = 4096, Leaf matrix size = 64, Strassen's (s) =   2.5557 s, Standard = not computed for large matrices 
+Number of threads = 24
+Matrix size = 4096, Leaf matrix size = 128, Strassen's (s) =   2.8438 s, Standard = not computed for large matrices 
+Threads = 48
+Number of threads = 48
+Matrix size = 4096, Leaf matrix size = 32, Strassen's (s) =   2.0280 s, Standard = not computed for large matrices 
+Number of threads = 48
+Matrix size = 4096, Leaf matrix size = 64, Strassen's (s) =   2.1446 s, Standard = not computed for large matrices 
+Number of threads = 48
+Matrix size = 4096, Leaf matrix size = 128, Strassen's (s) =   2.2801 s, Standard = not computed for large matrices 
+=== k=13 ===
+Threads = 1
+Number of threads = 1
+Matrix size = 8192, Leaf matrix size = 32, Strassen's (s) = 225.0729 s, Standard = not computed for large matrices 
+Number of threads = 1
+Matrix size = 8192, Leaf matrix size = 64, Strassen's (s) = 257.3760 s, Standard = not computed for large matrices 
+Number of threads = 1
+Matrix size = 8192, Leaf matrix size = 128, Strassen's (s) = 283.6636 s, Standard = not computed for large matrices 
+Threads = 2
+Number of threads = 2
+Matrix size = 8192, Leaf matrix size = 32, Strassen's (s) = 118.1984 s, Standard = not computed for large matrices 
+Number of threads = 2
+Matrix size = 8192, Leaf matrix size = 64, Strassen's (s) = 131.6894 s, Standard = not computed for large matrices 
+Number of threads = 2
+Matrix size = 8192, Leaf matrix size = 128, Strassen's (s) = 147.2001 s, Standard = not computed for large matrices 
+Threads = 4
+Number of threads = 4
+Matrix size = 8192, Leaf matrix size = 32, Strassen's (s) =  62.4943 s, Standard = not computed for large matrices 
+Number of threads = 4
+Matrix size = 8192, Leaf matrix size = 64, Strassen's (s) =  69.8748 s, Standard = not computed for large matrices 
+Number of threads = 4
+Matrix size = 8192, Leaf matrix size = 128, Strassen's (s) =  78.6782 s, Standard = not computed for large matrices 
+Threads = 8
+Number of threads = 8
+Matrix size = 8192, Leaf matrix size = 32, Strassen's (s) =  34.6297 s, Standard = not computed for large matrices 
+Number of threads = 8
+Matrix size = 8192, Leaf matrix size = 64, Strassen's (s) =  38.5081 s, Standard = not computed for large matrices 
+Number of threads = 8
+Matrix size = 8192, Leaf matrix size = 128, Strassen's (s) =  41.8643 s, Standard = not computed for large matrices 
+Threads = 16
+Number of threads = 16
+Matrix size = 8192, Leaf matrix size = 32, Strassen's (s) =  19.7361 s, Standard = not computed for large matrices 
+Number of threads = 16
+Matrix size = 8192, Leaf matrix size = 64, Strassen's (s) =  22.4945 s, Standard = not computed for large matrices 
+Number of threads = 16
+Matrix size = 8192, Leaf matrix size = 128, Strassen's (s) =  23.8881 s, Standard = not computed for large matrices 
+Threads = 24
+Number of threads = 24
+Matrix size = 8192, Leaf matrix size = 32, Strassen's (s) =  14.8395 s, Standard = not computed for large matrices 
+Number of threads = 24
+Matrix size = 8192, Leaf matrix size = 64, Strassen's (s) =  16.1309 s, Standard = not computed for large matrices 
+Number of threads = 24
+Matrix size = 8192, Leaf matrix size = 128, Strassen's (s) =  17.1883 s, Standard = not computed for large matrices 
+Threads = 48
+Number of threads = 48
+Matrix size = 8192, Leaf matrix size = 32, Strassen's (s) =  11.1780 s, Standard = not computed for large matrices 
+Number of threads = 48
+Matrix size = 8192, Leaf matrix size = 64, Strassen's (s) =  11.6891 s, Standard = not computed for large matrices 
+Number of threads = 48
+Matrix size = 8192, Leaf matrix size = 128, Strassen's (s) =  12.1989 s, Standard = not computed for large matrices 
+=== k=14 ===
+Threads = 1
+Number of threads = 1
+Matrix size = 16384, Leaf matrix size = 64, Strassen's (s) = 1805.7987 s, Standard = not computed for large matrices 
+Number of threads = 1
+Matrix size = 16384, Leaf matrix size = 128, Strassen's (s) = 2005.0627 s, Standard = not computed for large matrices 
+slurmstepd: error: *** JOB 17865326 ON c279 CANCELLED AT 2026-02-22T22:43:57 DUE TO TIME LIMIT ***

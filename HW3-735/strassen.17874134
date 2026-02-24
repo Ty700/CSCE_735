@@ -1,0 +1,9 @@
+icpx: error: no such file or directory: 'strassen_omp.cpp'
+icpx: error: no input files
+=== k=14, 48 threads ===
+Number of threads = 48
+Matrix size = 16384, Leaf matrix size = 64, Strassen's (s) =  80.8913 s, Standard = not computed for large matrices 
+Number of threads = 48
+Matrix size = 16384, Leaf matrix size = 128, Strassen's (s) =  87.3568 s, Standard = not computed for large matrices 
+Number of threads = 48
+Matrix size = 16384, Leaf matrix size = 256, Strassen's (s) =  86.3140 s, Standard = not computed for large matrices 
